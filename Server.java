@@ -1,6 +1,7 @@
 public class Server {
     private static final int MIN_THREADS = 2;
     private static final int MAX_THREADS = 100;
+    private static final int NUM_ITERATIONS = 5;
 
     public static void main(String[] args) {
         // Test Peterson's Algorithm
@@ -47,7 +48,7 @@ public class Server {
                 System.exit(1);
         }
 
-        // Create worker threads (IDs start at 0 and increment by 1)
+        // Create worker threads
         Worker[] workers = new Worker[numThreads];
         long[] startTimes = new long[numThreads];
         long[] endTimes = new long[numThreads];

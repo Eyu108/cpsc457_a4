@@ -1,6 +1,6 @@
 public class Worker extends Thread {
     private CriticalSection_Base Section;
-    //java threads have an ID already, however you can use this to make sure you have control over the starting value and increment
+    // Java threads have an ID already, however you can use this to make sure you have control over the starting value and increment
     int ID;
 
     public Worker(CriticalSection_Base Section, int ID) {
@@ -15,7 +15,7 @@ public class Worker extends Thread {
             try {
                 Section.CriticalSection(this);
             } catch (InterruptedException e) {
-                //elevate the exception, this should not happen
+                // Elevate the exception, this should not happen
                 throw new RuntimeException(e);
             }
             Section.ExitSection(this);
