@@ -9,14 +9,16 @@ public class Worker extends Thread {
     }
 
     public void run() {
-        //This is for a single entry/exit of the CS
-        Section.EntrySection(this);
-        try {
-            Section.CriticalSection(this);
-        } catch (InterruptedException e) {
-            //elevate the exception, this should not happen
-            throw new RuntimeException(e);
+        // Each thread enters and exits the critical section 5 times
+        for (int i = 0; i < 5; i++) {
+            Section.EntrySection(this);
+            try {
+                Section.CriticalSection(this);
+            } catch (InterruptedException e) {
+                //elevate the exception, this should not happen
+                throw new RuntimeException(e);
+            }
+            Section.ExitSection(this);
         }
-        Section.ExitSection(this);
     }
 }
